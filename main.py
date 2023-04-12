@@ -45,8 +45,6 @@ def insert_cell_location(bom_wb, stock_dict, bom_file):
 
 
 if __name__ == '__main__':
-    # stock = "C:\\Users\Lidor-lenovo\PycharmProjects\AltiumStockSearcher\stock.xlsx"
     stock = sys.argv[1]
     bom = sys.argv[2]
-    # bom = "C:\\Users\Lidor-lenovo\PycharmProjects\AltiumStockSearcher\\bom.xlsx"
     run(stock, bom)
