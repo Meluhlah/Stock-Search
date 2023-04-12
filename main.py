@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMainWindow
 SOURCE_COLUMN = 'D'  # Location of cell value from source file.
 MAX_ROWS = 500
 MAX_COLUMNS = 500
-TARGET_COL = 4  # In which column the cell location will be inerted at
+TARGET_COL = 4  # In which column the cell location will be inserted at
 DESCRIPTION_CELLS = ['Description', 'Manufacturer', 'MPN', 'QTY', 'CELL']
 
 
@@ -18,22 +18,22 @@ class MainWindow(gui.Ui_Dialog, QMainWindow, QDialog):
         self.target = ""
         self.stockPath = stock_path
         self.pathOK = False
-        self.fileType = False
+        self.fileTypeOK = False
         self.browse.clicked.connect(self.browse_files)
         self.run.clicked.connect(self.run_prog)
 
     def browse_files(self):
-        file_name = QFileDialog.getOpenFileName(self, 'Targer File', 'C:\\')
+        file_name = QFileDialog.getOpenFileName(self, 'Target File', 'C:\\')
         self.path.setText(file_name[0])
         self.pathOK = True
         file_type = file_name[0].split('.')
         if file_type[1] == "xlsx":
             self.target = file_name[0]
-            self.fileType = True
+            self.fileTypeOK = True
 
     def run_prog(self):
         if self.pathOK:
-            if self.fileType:
+            if self.fileTypeOK:
                 result = run(self.stockPath, self.target)
                 if result:
                     self.output.setText("File Modified Successfully!")
